@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>shop</display-name>
+   <!-- 配置Spring的核心监听器 保证一个应用只有一个容器 -->
+ <listener>
+ 	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+ </listener>
+ <!-- 手动指定spring配置文件的位置 -->
+ <context-param>
+ 	<param-name>contextConfigLocation</param-name>
+ 	<param-value>classpath:applicationContext.xml</param-value>
+ </context-param>
+ 
+ <!-- 配置Struts2的核心过滤器 -->
+ <filter>
+ 	<filter-name>struts2</filter-name>
+ 	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+ </filter>
+ <filter-mapping>
+ 	<filter-name>struts2</filter-name>
+ 	<url-pattern>/*</url-pattern>
+ 	<dispatcher>REQUEST</dispatcher><!-- 请求 --><!-- 默认转发过滤器不执行 action就访问不到 -->
+ 	<dispatcher>FORWARD</dispatcher><!-- 转发 -->
+ </filter-mapping>
+</web-app>
